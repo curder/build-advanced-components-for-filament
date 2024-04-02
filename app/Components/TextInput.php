@@ -5,17 +5,19 @@ declare(strict_types=1);
 namespace App\Components;
 
 use Closure;
-use ReflectionClass;
-use ReflectionMethod;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Stringable;
-use Illuminate\Contracts\View\View;
-use Illuminate\Contracts\Support\Htmlable;
+use Livewire\Component;
+use ReflectionClass;
+use ReflectionMethod;
 
 final class TextInput implements Htmlable
 {
-    private string|Stringable $label;
+    protected string|Stringable|Closure $label;
 
+    protected Component $livewire;
     public function __construct(protected string $name)
     {
     }
@@ -25,7 +27,13 @@ final class TextInput implements Htmlable
         return new self($name);
     }
 
-    public function label(string $label): self
+    public function livewire(Component $livewire): self
+    {
+        $this->livewire = $livewire;
+
+        return $this;
+    }
+    public function label(string|Closure $label): self
     {
 
         $this->label = $label;
@@ -35,9 +43,25 @@ final class TextInput implements Htmlable
 
     public function getLabel(): string|Stringable
     {
-        return $this->label ?? str($this->name)->title();
+        return $this->evaluate($this->label ?? null) ?? str($this->name)->title();
     }
 
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function evaluate($value)
+    {
+        if ($value instanceof Closure) {
+            return app()->call($value, [
+                'state' => $this->livewire->{$this->getName()}
+            ]);
+        }
+
+        return $value;
+    }
+    
     public function extractPublicMethods(): Collection
     {
         $reflection = new ReflectionClass($this);

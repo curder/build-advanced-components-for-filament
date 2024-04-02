@@ -1,1 +1,1 @@
-{{ $input }}
+@livewire(\App\Livewire\TestForm::class)
