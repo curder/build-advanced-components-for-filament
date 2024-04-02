@@ -18,9 +18,16 @@ final class TestForm extends Component
             $input->maxLength(2);
         });
 
+        TextInput::macro('foo', function() {
+            dump('bar');
+            return $this;
+        });
+
         $name = TextInput::make('name')
+            ->foo()
             ->livewire($this);
         $email = TextInput::make('email')
+            ->foo()
             ->maxLength(1)
             ->livewire($this);
 

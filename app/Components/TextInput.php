@@ -9,12 +9,15 @@ use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Stringable;
+use Illuminate\Support\Traits\Macroable;
 use Livewire\Component;
 use ReflectionClass;
 use ReflectionMethod;
 
 final class TextInput implements Htmlable
 {
+    use Macroable;
+
     private string|Stringable|Closure $label;
 
     private int|Closure|null $maxLength = null;
@@ -26,7 +29,6 @@ final class TextInput implements Htmlable
     public function __construct(protected string $name)
     {
     }
-
 
     public static function configureUsing(Closure $configure): void
     {
