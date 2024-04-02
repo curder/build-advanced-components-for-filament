@@ -15,16 +15,33 @@ use ReflectionMethod;
 
 final class TextInput implements Htmlable
 {
-    protected string|Stringable|Closure $label;
+    private string|Stringable|Closure $label;
 
-    protected Component $livewire;
+    private int|Closure|null $maxLength = null;
+
+    private Component $livewire;
+
+    protected static array $configurations = [];
+
     public function __construct(protected string $name)
     {
     }
 
+
+    public static function configureUsing(Closure $configure): void
+    {
+        self::$configurations[] = $configure;
+    }
+
     public static function make(string $name): self
     {
-        return new self($name);
+        $input = new self($name);
+
+        foreach (self::$configurations as $configure) {
+            $configure($input);
+        }
+
+        return $input;
     }
 
     public function livewire(Component $livewire): self
@@ -33,6 +50,7 @@ final class TextInput implements Htmlable
 
         return $this;
     }
+
     public function label(string|Closure $label): self
     {
 
@@ -51,17 +69,30 @@ final class TextInput implements Htmlable
         return $this->name;
     }
 
+    public function maxLength(int|Closure|null $maxLength):self
+    {
+
+        $this->maxLength = $maxLength;
+
+        return $this;
+    }
+
+    public function getMaxLength(): ?int
+    {
+        return $this->evaluate($this->maxLength);
+    }
+
     public function evaluate($value)
     {
         if ($value instanceof Closure) {
             return app()->call($value, [
-                'state' => $this->livewire->{$this->getName()}
+                'state' => $this->livewire->{$this->getName()},
             ]);
         }
 
         return $value;
     }
-    
+
     public function extractPublicMethods(): Collection
     {
         $reflection = new ReflectionClass($this);

@@ -1,2 +1,2 @@
 <label for="{{ $getName() }}">{{ $getLabel() }}</label>
-<input type="text" wire:model.live="{{ $getName() }}"/>
+<input type="text" maxlength="{{ $getMaxLength() }}" x wire:model.live="{{ $getName() }}"/>

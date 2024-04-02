@@ -1,3 +1,6 @@
 <div>
-    {{ $input }}
+    {{ $nameInput }}
+
+    {{ $emailInput }}
+
 </div>
