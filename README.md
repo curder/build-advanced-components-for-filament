@@ -1,3 +1,8 @@
+# 一些地址
+
+- [Build Advanced Components For Filament - Video course from laracasts](https://laracasts.com/series/build-advanced-components-for-filament)
+- [Laravel Package Tools](https://github.com/spatie/laravel-package-tools)
+
 # 一些命令
 
 ```php

@@ -1,0 +1,27 @@
+{
+  "name": "curder/filament-toolkit",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Curder\\FilamentToolkit\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "curder",
+      "email": "q.curder@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "filament/support": "^3.0"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Curder\\FilamentToolkit\\FilamentToolkitServiceProvider"
+      ]
+    }
+  }
+}
