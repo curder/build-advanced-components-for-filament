@@ -4,18 +4,19 @@ declare(strict_types=1);
 
 namespace App\Livewire;
 
-use App\Forms\Components\ColorPicker;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
-use Illuminate\Contracts\View\View;
 use Livewire\Component;
+use Filament\Forms\Form;
+use App\Forms\Components\Section;
+use Illuminate\Contracts\View\View;
+use App\Forms\Components\ColorPicker;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Concerns\InteractsWithForms;
 
 final class DemoForm extends Component implements HasForms
 {
     use InteractsWithForms;
 
-    public array $data = [];
+    public ?array $data = [];
 
     public function mount(): void
     {
@@ -26,20 +27,38 @@ final class DemoForm extends Component implements HasForms
     {
         return $form
             ->schema([
-                ColorPicker::make('color1')
-                    ->width(100)
-                    ->default('#f00'),
+                Section::make('Colors')
+                    ->description('Pick your own color scheme for the app')
+                    ->icon('heroicon-o-swatch')
+                    ->schema([
+                        ColorPicker::make('primary')
+                            ->width(100)
+                            ->default('#fbbf24'),
 
-                ColorPicker::make('color2')
-                    ->width(100)
-                    ->default('#0f0'),
+                        ColorPicker::make('secondary')
+                            ->width(100)
+                            ->default('#c084fc'),
+                        ColorPicker::make('success')
+                            ->default('#84cc16')
+                            ->width(100),
+                        ColorPicker::make('warning')
+                            ->default('#facc15')
+                            ->width(100),
+                        ColorPicker::make('danger')
+                            ->default('#ef4444')
+                            ->width(100),
+                        ColorPicker::make('gray')
+                            ->default('#a1a1aa')
+                            ->width(100),
+                    ])
+                    ->columns(3),
             ])
             ->statePath('data');
     }
 
     public function submit(): void
     {
-
+        $data = $this->form->getState();
     }
 
     public function render(): View

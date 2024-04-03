@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Livewire;
 
+use Livewire\Component;
 use App\Components\TextInput;
 use Illuminate\Contracts\View\View;
-use Livewire\Component;
 
 final class TestForm extends Component
 {
@@ -14,12 +14,13 @@ final class TestForm extends Component
 
     public function render(): View
     {
-        TextInput::configureUsing(function(TextInput $input) {
+        TextInput::configureUsing(function (TextInput $input) {
             $input->maxLength(2);
         });
 
-        TextInput::macro('foo', function() {
+        TextInput::macro('foo', function () {
             dump('bar');
+
             return $this;
         });
 

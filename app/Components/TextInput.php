@@ -5,26 +5,26 @@ declare(strict_types=1);
 namespace App\Components;
 
 use Closure;
-use Illuminate\Contracts\Support\Htmlable;
-use Illuminate\Contracts\View\View;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Stringable;
-use Illuminate\Support\Traits\Macroable;
-use Livewire\Component;
 use ReflectionClass;
 use ReflectionMethod;
+use Livewire\Component;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Stringable;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Traits\Macroable;
+use Illuminate\Contracts\Support\Htmlable;
 
 final class TextInput implements Htmlable
 {
     use Macroable;
+
+    protected static array $configurations = [];
 
     private string|Stringable|Closure $label;
 
     private int|Closure|null $maxLength = null;
 
     private Component $livewire;
-
-    protected static array $configurations = [];
 
     public function __construct(protected string $name)
     {
@@ -71,7 +71,7 @@ final class TextInput implements Htmlable
         return $this->name;
     }
 
-    public function maxLength(int|Closure|null $maxLength):self
+    public function maxLength(int|Closure|null $maxLength): self
     {
 
         $this->maxLength = $maxLength;
