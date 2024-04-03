@@ -1,3 +1,18 @@
 import iro from '@jaames/iro';
 
-window.iro = iro
+export default function colorPicker({state, width}) {
+    return {
+        state,
+
+        init() {
+            let colorPicker = new iro.ColorPicker(this.$refs.picker, {
+                ...(width ? {width} : {}),
+                color: this.state
+            });
+
+            colorPicker.on('color:change', (color) => {
+                this.state = color.hexString;
+            });
+        }
+    }
+}

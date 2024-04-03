@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Curder\FilamentToolkit;
 
-use Filament\Support\Assets\Js;
 use Spatie\LaravelPackageTools\Package;
 use Filament\Support\Facades\FilamentAsset;
+use Filament\Support\Assets\AlpineComponent;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 final class FilamentToolkitServiceProvider extends PackageServiceProvider
@@ -21,7 +21,7 @@ final class FilamentToolkitServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
         FilamentAsset::register([
-            Js::make('iro', __DIR__.'/../resources/dist/filament-toolkit.js'),
+            AlpineComponent::make('color-picker', __DIR__.'/../resources/dist/color-picker.js'),
         ], 'curder/filament-toolkit');
     }
 }
