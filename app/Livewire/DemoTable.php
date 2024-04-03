@@ -8,9 +8,10 @@ use App\Models\User;
 use Livewire\Component;
 use Illuminate\View\View;
 use Filament\Tables\Table;
+use App\Tables\Columns\ColorColumn;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
+use Filament\Tables\Columns\TextInputColumn;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Tables\Concerns\InteractsWithTable;
 
@@ -21,9 +22,11 @@ final class DemoTable extends Component implements HasForms, HasTable
 
     public function table(Table $table): Table
     {
-        return $table->query(User::query())
+        return $table
+            ->query(User::query())
             ->columns([
-                TextColumn::make('name'),
+                TextInputColumn::make('name'),
+                ColorColumn::make('color'),
             ]);
     }
 
