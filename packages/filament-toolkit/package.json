@@ -1,0 +1,13 @@
+{
+  "name": "filament-toolkit",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build:scripts": "node bin/build.js"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "@jaames/iro": "^5.5.2",
+    "esbuild": "^0.20.2"
+  }
+}
