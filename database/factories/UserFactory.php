@@ -29,7 +29,7 @@ final class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
+            'email_verified_at' => now()->subMonths(mt_rand(1, 4)),
             'password' => self::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
             'color' => fake()->hexColor(),
