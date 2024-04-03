@@ -2,14 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Providers\Filament;
+namespace Curder\FilamentToolkit;
 
 use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
-use Curder\FilamentToolkit\Toolkit;
 use Filament\Http\Middleware\Authenticate;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;

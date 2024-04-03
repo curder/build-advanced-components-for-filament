@@ -20,7 +20,8 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Curder\\FilamentToolkit\\FilamentToolkitServiceProvider"
+        "Curder\\FilamentToolkit\\FilamentToolkitServiceProvider",
+        "Curder\\FilamentToolkit\\AdminPanelProvider"
       ]
     }
   }
