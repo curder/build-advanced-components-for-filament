@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Forms\Components;
+namespace App\Infolists\Components;
 
 use App\Concerns\InteractsWithSection;
-use Filament\Forms\Components\Component;
+use Filament\Infolists\Components\Component;
 
 final class Section extends Component
 {
