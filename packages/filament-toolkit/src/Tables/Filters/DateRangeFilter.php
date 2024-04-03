@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tables\Filters;
+namespace Curder\FilamentToolkit\Tables\Filters;
 
 use Closure;
 use DateTimeInterface;

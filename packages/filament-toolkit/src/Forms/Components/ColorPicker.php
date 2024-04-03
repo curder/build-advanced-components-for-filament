@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Forms\Components;
+namespace Curder\FilamentToolkit\Forms\Components;
 
 use Closure;
 use Filament\Forms\Components\Field;
 
 final class ColorPicker extends Field
 {
-    protected string $view = 'forms.components.color-picker';
+    protected string $view = 'filament-toolkit::forms.components.color-picker';
 
     protected int|Closure|null $width = null;
 

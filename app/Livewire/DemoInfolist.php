@@ -7,12 +7,12 @@ namespace App\Livewire;
 use Livewire\Component;
 use Filament\Infolists\Infolist;
 use Illuminate\Contracts\View\View;
-use App\Infolists\Components\Section;
 use Filament\Forms\Contracts\HasForms;
-use App\Infolists\Components\ColorEntry;
 use Filament\Infolists\Contracts\HasInfolists;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Infolists\Concerns\InteractsWithInfolists;
+use Curder\FilamentToolkit\Infolists\Components\Section;
+use Curder\FilamentToolkit\Infolists\Components\ColorEntry;
 
 final class DemoInfolist extends Component implements HasForms, HasInfolists
 {

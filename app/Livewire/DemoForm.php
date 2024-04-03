@@ -6,11 +6,11 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Filament\Forms\Form;
-use App\Forms\Components\Section;
 use Illuminate\Contracts\View\View;
-use App\Forms\Components\ColorPicker;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Concerns\InteractsWithForms;
+use Curder\FilamentToolkit\Forms\Components\Section;
+use Curder\FilamentToolkit\Forms\Components\ColorPicker;
 
 final class DemoForm extends Component implements HasForms
 {

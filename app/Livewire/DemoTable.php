@@ -9,14 +9,14 @@ use Livewire\Component;
 use Illuminate\View\View;
 use Filament\Tables\Table;
 use Illuminate\Support\Carbon;
-use App\Tables\Columns\ColorColumn;
 use Filament\Forms\Contracts\HasForms;
-use App\Tables\Filters\DateRangeFilter;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Columns\TextInputColumn;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Tables\Concerns\InteractsWithTable;
+use Curder\FilamentToolkit\Tables\Columns\ColorColumn;
+use Curder\FilamentToolkit\Tables\Filters\DateRangeFilter;
 
 final class DemoTable extends Component implements HasForms, HasTable
 {
@@ -37,7 +37,7 @@ final class DemoTable extends Component implements HasForms, HasTable
             ])->filters([
                 DateRangeFilter::make('email_verified_at')
                     ->label('Email verified at')
-                    ->maxDate('2024-01-01'),
+                    ->maxDate(),
             ]);
     }
 

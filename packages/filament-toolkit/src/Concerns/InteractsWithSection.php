@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Concerns;
+namespace Curder\FilamentToolkit\Concerns;
 
 use Closure;
 
